@@ -8,6 +8,6 @@ RUN pip install -r /requirements.txt
 COPY src /app
 WORKDIR /app
 
-RUN python manage.py collectstatic --noinput
+COPY /deploy/entrypoint.sh /entrypoint.sh
 
-CMD python manage.py migrate && uwsgi --http-socket 0.0.0.0:9000 --module=dlserver.wsgi:application --chmod=666 --master --process=$(grep -c ^processor /proc/cpuinfo)
+CMD /entrypoint.sh
