@@ -10,4 +10,4 @@ def get_direct_link(request, hashid):
         raise Http404
     file = version.file
 
-    return redirect('/download/%s/%s' % (version.slug, file.name), permanent=True)
+    return redirect('/uploads/%s/%s' % (version.slug, file.name), permanent=True)
