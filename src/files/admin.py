@@ -1,5 +1,5 @@
 from django.contrib.admin import register, ModelAdmin, TabularInline
-from .models import File, Version
+from .models import File, Version, Alias
 
 
 class VersionInline(TabularInline):
@@ -10,6 +10,11 @@ class VersionInline(TabularInline):
         'hashid'
     )
     readonly_fields = 'hashid',
+
+
+@register(Alias)
+class AliasModel(ModelAdmin):
+    pass
 
 
 @register(File)
